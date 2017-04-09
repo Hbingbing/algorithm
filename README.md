@@ -1,13 +1,13 @@
 # algorithm
 常见的排序算法
 
-//插入排序：直接插入 + 希尔排序
+## 插入排序：直接插入 + 希尔排序
 
-/*
-直接插入排序：
-基本思想：在已经有序的n个数的数组中插入数据，使得n+1个数据也是有序。
-注意：从有序数组的后向前扫描
-*/
+
+#### 直接插入排序
+- 基本思想：在已经有序的n个数的数组中插入数据，使得n+1个数据也是有序。
+- 注意：从有序数组的后向前扫描
+```
 function directSort(arr){
     var key;//哨兵
     var len = arr.length;
@@ -30,16 +30,18 @@ function directSort(arr){
     return arr;
 }
  directSort([49,38,65,97,76,13,27,49,55,4,13]);
+```
 
-/*
-希尔排序：是插入排序的一种，是插入排序的升级版---不稳定
-基本思想：
-1）对数组n确定第一个增量 d1；
-2）对间隔 d1 的记录放在同一组，进行插入排序；
-3）继续用第二个增量 d2（d2 = d1/2）,直到 di=1 
-说明：
-1）增量 d={n/2, n/4, n/8 ... 1}
-*/
+
+#### 希尔排序
+- 是插入排序的一种，是插入排序的升级版---不稳定
+- 基本思想：
+    - 对数组n确定第一个增量 d1；
+    - 对间隔 d1 的记录放在同一组，进行插入排序；
+    - 继续用第二个增量 d2（d2 = d1/2）,直到 di=1 
+- 说明：增量 d={n/2, n/4, n/8 ... 1}
+
+```
 function shellSort(arr){
     if(arr == null || arr.length == 0){
         console.log('arr is null.');
@@ -64,15 +66,14 @@ function shellSort(arr){
     return arr;
 }
 shellSort([49,38,65,97,76,13,27,49,55,4,13]);
+```
 
+## 选择排序：简单/直接选择排序、堆排序
 
-//选择排序：简单/直接选择排序、堆排序
-/*
-简单/直接选择排序：
-基本思想：第一次从arr[0]-arr[n-1]中选取最小（或最大）的值与arr[0]交换，
-第二次从arr[1]-arr[n-1]中选取最小（或最大）的值与arr[1]交换，
-依次类推，经过n-1次可得有序序列
-*/
+#### 简单/直接选择排序：
+- 基本思想：第一次从arr[0]-arr[n-1]中选取最小（或最大）的值与arr[0]交换，第二次从arr[1]-arr[n-1]中选取最小（或最大）的值与arr[1]交换，依次类推，经过n-1次可得有序序列
+
+```
 function directSelectSort(arr){
     var len = arr.length;
     for(var i = 0;i < len-1;i ++){
@@ -88,11 +89,11 @@ function directSelectSort(arr){
     return arr;
 }
 directSelectSort([49,38,65,97,76,13,27,49,55,4,13]);
+```
 
-/*
-堆排序：建堆+调整堆
-升序：建立大根堆
-*/
+#### 堆排序：建堆+调整堆
+- 升序：建立大根堆
+```
 function heapSort(arr){
     var len = arr.length;
     for(var i = 0;i < len-1;i ++){
@@ -132,11 +133,12 @@ function bulidHeap(arr,lastIndex){
     }
 }
 heapSort([49,38,65,97,76,13,27,49,55,4,13]);
+```
 
-//交换排序：冒泡排序、快速排序
-/*
-冒泡排序
-*/
+## 交换排序：冒泡排序、快速排序
+#### 冒泡排序
+
+```
 function bubbleSort(arr){
     var len = arr.length;
     //冒泡的趟数
@@ -154,13 +156,13 @@ function bubbleSort(arr){
     return arr;
 }
 bubbleSort([49,38,65,97,76,13,27,49,55,4,13]);
+```
 
-/*
-快速排序：
-基本思想：以第一个元素为key，把数组分为两部分，
-一部分小于等于key，一部分大于key，
-再对这两部分进行递归
-*/
+
+#### 快速排序：
+- 基本思想：以第一个元素为key，把数组分为两部分，一部分小于等于key，一部分大于key，再对这两部分进行递归
+
+```
 function quickSort(arr){
     function sort(prev,len){
         var i = prev;
@@ -191,11 +193,13 @@ function quickSort(arr){
     return arr;
 }
 quickSort([49,38,65,97,76,13,27,49,55,4,13]);
+```
 
-/*
-归并排序：
-基本思想：将已有序的子序列进行合并
-*/
+
+## 归并排序：
+- 基本思想：将已有序的子序列进行合并
+
+```
 //对左右两部分进行合并
 function merge(left,right){
     var result = [];
@@ -220,3 +224,4 @@ function mergeSort(arr){
     return merge(mergeSort(left),mergeSort(right));
 }
 console.log("mergeSort: "+mergeSort([49,38,65,97,76,13,27,49,55,4,13]));
+```
